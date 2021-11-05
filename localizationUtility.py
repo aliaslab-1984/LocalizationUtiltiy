@@ -8,11 +8,11 @@ from filesystem import *
 
 def buildAndroidFile(rawList, columnName, basePath):
     finalString = xmlHeaderString() + "\n" + rawList + "\n" + xmlFooterString()
-    path = os.path.join(basePath, "Android")
+    path = os.path.join(basePath, "Android/values-%s"%columnName)
     print("Saving Android translation to: ", path)
     try:
         os.makedirs(path, exist_ok = True)
-        writeFile(path, "%s.xml"%columnName, finalString)
+        writeFile(path, "strings.xml", finalString)
     except OSError as error:
         print(error)
         return
