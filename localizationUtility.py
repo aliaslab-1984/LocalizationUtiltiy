@@ -27,7 +27,6 @@ def buildiOSFile(rawList, columnName, basePath):
         print(error)
         return
 
-
 if len(sys.argv) == 1:
     print("Usage: call localizationUtility.py filename.csv")
 else:
