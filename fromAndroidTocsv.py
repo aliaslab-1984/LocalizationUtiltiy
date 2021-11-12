@@ -8,7 +8,7 @@ if len(sys.argv) < 2:
 else:
     inputFile = sys.argv[1]
     languageName = sys.argv[2]
-    outputPath = outputPath(inputFile, "translation.csv", 3)
+    outputPath = outputPath(inputFile, "translation.csv", 1)
 
     parsedKeys = list()
     parsedValues = list()

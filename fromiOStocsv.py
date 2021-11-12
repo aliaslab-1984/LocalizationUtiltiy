@@ -8,7 +8,7 @@ if len(sys.argv) < 2:
 else:
     inputFile = sys.argv[1]
     languageName = sys.argv[2]
-    outputPath = outputPath(inputFile, "translation.csv", 3)
+    outputPath = outputPath(inputFile, "translation.csv", 1)
 
     data = readFilePerLine(inputFile)
     parsedData = list()
@@ -17,9 +17,10 @@ else:
 
     for item in data:
         pair = extractiOSKeyAndValue(item)
-        parsedData.append(pair)
-        parsedKeys.append(pair[0])
-        parsedValues.append(pair[1])
+        if pair != None:
+            parsedData.append(pair)
+            parsedKeys.append(pair[0])
+            parsedValues.append(pair[1])
 
     if os.path.exists(outputPath):
         file = pd.read_csv(outputPath)
