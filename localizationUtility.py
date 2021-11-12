@@ -35,7 +35,7 @@ else:
     if inputFile == "-help" or inputFile == "-h":
         print("Usage: call localizationUtility.py filename.csv")
     else:
-        print(inputFile)
+        print("Parsing", inputFile)
         df = pd.read_csv(inputFile, sep=';')
         columns = list(df.columns)
         columnCount = len(columns)
