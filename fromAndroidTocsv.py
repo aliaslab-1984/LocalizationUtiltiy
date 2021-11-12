@@ -17,6 +17,10 @@ else:
     parsedKeys = pairs[0]
     parsedValues = pairs[1]
 
+    for i, val in enumerate(parsedValues):
+         parsedValues[i] = invertXMLSpecialCharacters(val)
+
+
     if os.path.exists(outputPath):
         file = pd.read_csv(outputPath)
         frame = pd.DataFrame(file)
