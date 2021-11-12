@@ -35,6 +35,21 @@ Here's the usage with the third parameter:
 > python3 fromiOStocsv.py firstFile.strings en ~/Desktop/Output/translation.csv
 >```
 
+#### Important note:
+In order to obtain a consistent table, it's better to export result of the script for all your languages in the same file.
+Doing this will allow you to have a table with multiple languages as this one:
+
+| KEYS          | en          | it          |
+| ------------- |:-----------:| -----------:|
+| hello_message | Hello!      | Ciao!       |
+| second_message| God Morning!| Buongiorno! |
+
+So, if your iOS app, is localized in english and italian, to obtain a unique table you're going to type these two commands:
+>```shell
+> python3 fromiOStocsv.py english.strings en ~/Desktop/Output/translation.csv
+> python3 fromiOStocsv.py italian.strings it ~/Desktop/Output/translation.csv
+>```
+
 ### mergeCSV.py
 
 This script aims to merge multiple localization csvs into one.
