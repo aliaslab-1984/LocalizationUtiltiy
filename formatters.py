@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 # Android stuff
 def formatXML(key, value):
     # gestire ' con \'
-    return '\t<string name="%s">%s</string>'%(key, value.replace("'", "\\'"))
+    return '\t<string name="%s">%s</string>'%(key, value.replace("'", "\'").replace("…", "&#8230;").replace("...", "&#8230;"))
 
 def xmlHeaderString():
     return "<resources>"
@@ -30,6 +30,5 @@ def formatiOSString(key, value):
 def extractiOSKeyAndValue(element):
     elements = element.split(' = ')
     key = elements[0].replace('"', "")
-    value = elements[1].replace('"', "").replace(";", "").rstrip()
+    value = elements[1].replace('"', "").replace(";", "").replace("&#8230;", "…").rstrip()
     return (key, value)
-
