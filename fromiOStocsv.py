@@ -9,7 +9,6 @@ else:
     inputFile = sys.argv[1]
     languageName = sys.argv[2]
     outputPath = outputPath(inputFile, "translation.csv", 1)
-
     data = readFilePerLine(inputFile)
     parsedData = list()
     parsedKeys = list()
@@ -21,6 +20,8 @@ else:
             parsedData.append(pair)
             parsedKeys.append(pair[0])
             parsedValues.append(pair[1])
+
+    print("Exporting to:", outputPath)
 
     if os.path.exists(outputPath):
         file = pd.read_csv(outputPath)

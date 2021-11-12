@@ -4,7 +4,8 @@ def outputPath(inputFile, defaultPath, splits):
     if len(sys.argv) > 3:
         return os.path.join(sys.argv[3])
     else: 
-        return os.getcwd()
+        base = os.getcwd()
+        return os.path.join(base, defaultPath)
         #outputPath = split(inputFile, splits)
         #outputPath = os.path.join(outputPath, defaultPath)
         #return outputPath
