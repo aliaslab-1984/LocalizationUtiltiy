@@ -3,20 +3,12 @@ from filesystem import *
 import pandas as pd
 import sys
 
-def outputPath(inputFile):
-    if len(sys.argv) > 3:
-        return sys.arg[3]
-    else: 
-        outputPath = split(inputFile, 3)
-        outputPath = os.path.join(outputPath, "translation.csv")
-
-
 if len(sys.argv) < 2:
     print("Usage: call %s filename.xml it optional_output_path"%sys.argv[0])
 else:
     inputFile = sys.argv[1]
     languageName = sys.argv[2]
-    outputPath = outputPath(inputFile)
+    outputPath = outputPath(inputFile, "translation.csv", 3)
 
     parsedKeys = list()
     parsedValues = list()

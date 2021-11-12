@@ -1,5 +1,12 @@
 import os, sys
 
+def outputPath(inputFile, defaultPath, splits):
+    if len(sys.argv) > 3:
+        return sys.arg[3]
+    else: 
+        outputPath = split(inputFile, splits)
+        outputPath = os.path.join(outputPath, defaultPath)
+
 # make dirs with mode
 def writeFile(path, name, finalString):
     fd = open(os.path.join(path, name), "w")
