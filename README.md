@@ -32,7 +32,7 @@ It's also possible to specify a third parameter into the script to specify the p
 Here's the usage with the third parameter:
 
 >```shell
-> python3 fromiOStocsv.py firstFile.strings en ../Output/translation.csv
+> python3 fromiOStocsv.py firstFile.strings en ~/Desktop/Output/translation.csv
 >```
 
 ### mergeCSV.py
