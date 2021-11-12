@@ -4,12 +4,11 @@ import pandas as pd
 import sys
 
 if len(sys.argv) < 2:
-    print("Usage: call fromiOStocsv.py filename.strings it")
+    print("Usage: call %s filename.strings itoptional_output_path"%sys.argv[0])
 else:
     inputFile = sys.argv[1]
     languageName = sys.argv[2]
-    outputPath = split(inputFile, 3)
-    outputPath = os.path.join(outputPath, "translation.csv")
+    outputPath = outputPath(inputFile)
 
     data = readFilePerLine(inputFile)
     parsedData = list()
