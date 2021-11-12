@@ -29,7 +29,7 @@ if len(sys.argv) == 1:
     print("Usage: call localizationUtility.py filename.csv")
 else:
     inputFile = sys.argv[1]
-    outputPath = os.path.split(inputFile)[0]
+    outputPath = os.getcwd()
     outputPath = os.path.join(outputPath, "Translation")
 
     if inputFile == "-help" or inputFile == "-h":
