@@ -20,25 +20,22 @@ else:
     for i, val in enumerate(parsedValues):
          parsedValues[i] = invertXMLSpecialCharacters(val)
 
-    print("Exporting to:", outputPath)
-
-    if os.path.exists(outputPath):
-        file = pd.read_csv(outputPath)
-        frame = pd.DataFrame(file)
-        if languageName not in frame.columns:
-            frame[languageName] = parsedValues
-            frame.to_csv(outputPath, index = False, sep = ';')
-        else:
-            tableData = {"keys": parsedKeys,
-            languageName: parsedValues}
-
-            newFrame = pd.concat([frame, pd.DataFrame(tableData)], ignore_index=True, verify_integrity= True).sort_values(by='keys')
-            newFrame.to_csv(outputPath, index = False, sep = ';')
-    else:
-        tableData = {"keys": parsedKeys,
+    tableData = {"keys": parsedKeys,
             languageName: parsedValues
             }
 
-        frame = pd.DataFrame(tableData)
+    if os.path.exists(outputPath):
+        print("Found an existing translation file, merging..")
+        file = pd.read_csv(outputPath, sep = ';')
+        existingDataFrame = pd.DataFrame(file).sort_values(by='keys', ignore_index = True)
+
+        newDataFrame = pd.DataFrame(tableData).sort_values(by='keys', ignore_index = True)
+        mergedFrame = pd.merge(existingDataFrame, newDataFrame).sort_values(by='keys')
+        mergedFrame.to_csv(outputPath, index = False, sep = ';')
+    else:
+        print("Exporting to:", outputPath)
+        frame = pd.DataFrame(tableData).sort_values(by='keys', ignore_index = True)
 
         frame.to_csv(outputPath, index = False, sep = ';')
+
+print("Exported to:", outputPath)

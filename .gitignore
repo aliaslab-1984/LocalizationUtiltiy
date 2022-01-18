@@ -2,3 +2,4 @@ __pycache__
 formatters.pyc
 Translation
 translation.csv
+*.csv

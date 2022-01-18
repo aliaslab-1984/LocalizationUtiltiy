@@ -15,30 +15,34 @@ else:
     parsedValues = list()
 
     for item in data:
-        print("Red line: ", item)
+        # print("Red line: ", item)
         pair = extractiOSKeyAndValue(item)
         if pair != None:
-            print("Red key: ", pair[0])
-            print("Red value: ", pair[1])
+            # print("Red key: ", pair[0])
+            # print("Red value: ", pair[1])
             parsedData.append(pair)
             parsedKeys.append(pair[0])
             parsedValues.append(pair[1])
 
     print("Red ", len(parsedData), "pairs.")
-    print("Exporting to:", outputPath)
+    
 
-    if os.path.exists(outputPath):
-        file = pd.read_csv(outputPath, sep = ';')
-        frame = pd.DataFrame(file)
-        if languageName not in frame.columns:
-            frame[languageName] = parsedValues
-
-        frame.to_csv(outputPath, index = False, sep = ';')
-    else:
-        tableData = {"keys": parsedKeys,
+    tableData = {"keys": parsedKeys,
             languageName: parsedValues
             }
 
-        frame = pd.DataFrame(tableData)
+    if os.path.exists(outputPath):
+        print("Found an existing translation file, merging..")
+        file = pd.read_csv(outputPath, sep = ';')
+        existingDataFrame = pd.DataFrame(file).sort_values(by='keys', ignore_index = True)
+
+        newDataFrame = pd.DataFrame(tableData).sort_values(by='keys', ignore_index = True)
+        mergedFrame = pd.merge(existingDataFrame, newDataFrame).sort_values(by='keys')
+        mergedFrame.to_csv(outputPath, index = False, sep = ';')
+    else:
+        print("Exporting to:", outputPath)
+        frame = pd.DataFrame(tableData).sort_values(by='keys', ignore_index = True)
 
         frame.to_csv(outputPath, index = False, sep = ';')
+
+print("Exported to:", outputPath)

@@ -12,14 +12,14 @@ else:
     secondOutput = os.path.join(outputPath, "mergedtranslation.csv")
     outputPath = os.path.join(outputPath, "concattranslation.csv")
 
-    firstFile = pd.read_csv(inputFile)
-    secondFile = pd.read_csv(secondFile, sep=';')
+    firstFile = pd.read_csv(inputFile, sep = ';')
+    secondFile = pd.read_csv(secondFile, sep = ';')
     frame = pd.DataFrame(firstFile)
     frame2 = pd.DataFrame(secondFile)
     
     concatFrame = pd.concat([frame, frame2], ignore_index=True, verify_integrity= True).sort_values(by='keys').drop_duplicates()
-    concatFrame.to_csv(outputPath, index = False)
+    concatFrame.to_csv(outputPath, index = False, sep = ';')
 
     mergedFrame = pd.merge(firstFile, secondFile).sort_values(by='keys')
-    mergedFrame.to_csv(secondOutput, index = False)
+    mergedFrame.to_csv(secondOutput, index = False, sep = ';')
   
