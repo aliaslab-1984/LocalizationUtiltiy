@@ -32,8 +32,9 @@ def formatiOSString(key, value):
 
 def extractiOSKeyAndValue(element):
     elements = element.split(' = ')
+    print("Parsed elements: ", elements)
     if len(elements) < 2:
         return
     key = elements[0].replace('"', "")
-    value = elements[1].replace('"', "").replace(";", "").rstrip()
+    value = elements[1].replace('"', "").rstrip(" \n;")
     return (key, value)
