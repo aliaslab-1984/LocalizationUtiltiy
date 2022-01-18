@@ -28,7 +28,7 @@ else:
     print("Exporting to:", outputPath)
 
     if os.path.exists(outputPath):
-        file = pd.read_csv(outputPath)
+        file = pd.read_csv(outputPath, sep = ';')
         frame = pd.DataFrame(file)
         if languageName not in frame.columns:
             frame[languageName] = parsedValues
