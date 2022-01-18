@@ -33,7 +33,7 @@ else:
             languageName: parsedValues}
 
             newFrame = pd.concat([frame, pd.DataFrame(tableData)], ignore_index=True, verify_integrity= True).sort_values(by='keys')
-            newFrame.to_csv(outputPath, index = False)
+            newFrame.to_csv(outputPath, index = False, sep = ';')
     else:
         tableData = {"keys": parsedKeys,
             languageName: parsedValues
@@ -41,4 +41,4 @@ else:
 
         frame = pd.DataFrame(tableData)
 
-        frame.to_csv(outputPath, index = False)
+        frame.to_csv(outputPath, index = False, sep = ';')

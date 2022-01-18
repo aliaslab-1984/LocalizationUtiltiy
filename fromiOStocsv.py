@@ -33,7 +33,7 @@ else:
         if languageName not in frame.columns:
             frame[languageName] = parsedValues
 
-        frame.to_csv(outputPath, index = False)
+        frame.to_csv(outputPath, index = False, sep = ';')
     else:
         tableData = {"keys": parsedKeys,
             languageName: parsedValues
@@ -41,4 +41,4 @@ else:
 
         frame = pd.DataFrame(tableData)
 
-        frame.to_csv(outputPath, index = False)
+        frame.to_csv(outputPath, index = False, sep = ';')
