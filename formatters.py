@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 # Android stuff
 def formatXML(key, value):
     # gestire ' con \'
+    if isNaN(value):
+        value = "- ToDo -"
     return '\t<string name="%s">%s</string>'%(key, value.replace("'", "\'").replace("…", "&#8230;").replace("...", "&#8230;"))
 
 def invertXMLSpecialCharacters(inputString):
@@ -38,3 +40,6 @@ def extractiOSKeyAndValue(element):
     key = elements[0].replace('"', "")
     value = elements[1].replace('"', "").rstrip(" \n;")
     return (key, value)
+
+def isNaN(num):
+    return num != num
