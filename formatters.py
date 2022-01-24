@@ -5,7 +5,7 @@ def formatXML(key, value):
     # gestire ' con \'
     if isNaN(value):
         value = "- ToDo -"
-    return '\t<string name="%s">%s</string>'%(key, value.replace("'", "\'").replace("…", "&#8230;").replace("...", "&#8230;"))
+    return '\t<string name="%s">%s</string>'%(key, value.replace("'", r"\'").replace("…", "&#8230;").replace("...", "&#8230;"))
 
 def invertXMLSpecialCharacters(inputString):
     return inputString.replace("\\'", "'").replace("&#8230;", "…")

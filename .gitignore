@@ -3,3 +3,4 @@ formatters.pyc
 Translation
 translation.csv
 *.csv
+.idea
