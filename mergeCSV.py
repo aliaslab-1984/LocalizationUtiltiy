@@ -16,10 +16,31 @@ else:
     secondFile = pd.read_csv(secondFile, sep = ';')
     frame = pd.DataFrame(firstFile)
     frame2 = pd.DataFrame(secondFile)
-    
-    concatFrame = pd.concat([frame, frame2], ignore_index=True, verify_integrity= True).sort_values(by='keys').drop_duplicates()
-    concatFrame.to_csv(outputPath, index = False, sep = ';')
 
-    mergedFrame = pd.merge(firstFile, secondFile).sort_values(by='keys')
-    mergedFrame.to_csv(secondOutput, index = False, sep = ';')
+    firstColumns = set(frame.columns.values.tolist())
+    secondColumns = set(frame2.columns.values.tolist())
+
+    print(len(frame.index))
+    print(len(frame2.index))
+
+    subtraction = firstColumns - secondColumns
+    if len(subtraction) > 0:
+        #they are different
+        intersection = firstColumns.intersection(secondColumns)
+        if len(intersection) > 0:
+            missingColumn = secondColumns - intersection
+            for item in missingColumn:
+                frame[item] = "TODO"
+        
+        secondIntersection = secondColumns.intersection(firstColumns)
+        if len(intersection) > 0:
+            missingColumn2 = firstColumns - intersection
+            for item in missingColumn2:
+                frame2[item] = "TODO"
+    
+    concatFrame = pd.concat([frame, frame2], ignore_index=True, verify_integrity= True).drop_duplicates(subset = "keys")
+    concatFrame.sort_values(by='keys').to_csv(outputPath, index = False, sep = ';')
+
+    #mergedFrame = pd.merge(firstFile, secondFile).sort_values(by='keys')
+    #mergedFrame.to_csv(secondOutput, index = False, sep = ';')
   
