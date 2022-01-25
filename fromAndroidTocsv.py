@@ -17,9 +17,6 @@ else:
     parsedKeys = pairs[0]
     parsedValues = pairs[1]
 
-    for i, val in enumerate(parsedValues):
-         parsedValues[i] = invertXMLSpecialCharacters(val)
-
     tableData = {"keys": parsedKeys,
             languageName: parsedValues
             }
