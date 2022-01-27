@@ -1,7 +1,7 @@
 # LocalizationUtiltiy
 A small python library that helps you to generate localization strings for your mobile projects and to merge iOS and Android localization files into a single .csv file.
 
-### localizationUtility.py
+### `localizationUtility.py`
 
 This small script aims to help you to manage localization for your cross-platform apps.
 To start off you have to configure a .csv file (or generate it using microsoft excell or pages) with this format:
@@ -19,7 +19,8 @@ Easy right ? The script will export all the translated strings right where your 
 
 ### fromiOStocsv.py and fromAndroidTocsv.py
 
-This script aims to convert your existing .strings/.xml files into a structured .csv file. If the output .csv file already exists, it appends the new one to the old one.
+This scripts aim to convert your existing .strings/.xml files into a structured .csv file.
+If the output .csv file already exists, it appends the new one to the old one. Specificaly, remember to specify the language from which you are importing.
 
 >**Usage:** 
 >```shell
@@ -52,12 +53,14 @@ So, if your iOS app, is localized in english and italian, to obtain a unique tab
 
 ### mergeCSV.py
 
-This script aims to merge multiple localization csvs into one.
+This script aims to merge multiple localization csv's into one.
 
 >**Usage:** 
 >```shell
 >python3 mergeCSV.py firstFile.csv secondFile.csv
 >```
+
+The output of this script will concatenate the contents of each file, removing all the duplicates entries (based on the key).
 
 ### Notes:
 

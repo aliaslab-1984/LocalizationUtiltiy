@@ -21,6 +21,8 @@ else:
             languageName: parsedValues
             }
 
+    print("Red ", len(parsedKeys), "pairs.")
+
     if os.path.exists(outputPath):
         print("Found an existing translation file, merging..")
         file = pd.read_csv(outputPath, sep = ';')

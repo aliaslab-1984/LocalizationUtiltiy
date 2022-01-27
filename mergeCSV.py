@@ -20,8 +20,7 @@ else:
     firstColumns = set(frame.columns.values.tolist())
     secondColumns = set(frame2.columns.values.tolist())
 
-    print(len(frame.index))
-    print(len(frame2.index))
+    print("The first file contains", len(frame.index), "touples, while the second contains", len(frame2.index) ," touples.")
 
     subtraction = firstColumns - secondColumns
     if len(subtraction) > 0:
